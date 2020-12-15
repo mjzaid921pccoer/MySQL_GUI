@@ -157,7 +157,7 @@ def getDb(generalTab,selectDB,tbList,tree):
 def deleteTb(generalTab,selectDB,selectTB):
     if selectDB.get() in sql.showdatabases():
         if (selectDB.get() not in systemDataBase) and (selectDB.get() not in userJaid):
-            if (askyesno("Delete Database?","Are you Sure?\nIt will permenently DELETE DATABASE : " + selectDB.get() + " !!!")):
+            if (askyesno("Delete Table?","Are you Sure?\nIt will permenently DELETE TABLE : " + selectDB.get() + ">"+selectTB.get()+" !!!")):
                 if(sql.droptable(selectDB.get(),selectTB.get())):
                     print("DEL : "+"Database :"+selectDB.get()+", Table :"+selectTB.get())
                     showgeneralTab(generalTab)
@@ -266,7 +266,7 @@ def runQuery(QueryArea):
 
 
 def selectQuery(QueryArea):
-    showinfo("SELECT Query info","")
+    showinfo("SELECT Query info","To select from a table in MySQL, use the \"SELECT\" statement")
     selectQ=StringVar()
     selectQ.set("SELECT * FROM `tableName` WHERE 1")
     QueryArea.delete(1.0, END)
@@ -274,7 +274,7 @@ def selectQuery(QueryArea):
 
 
 def insertQuery(QueryArea):
-    showinfo("INSERT Query info", "")
+    showinfo("INSERT Query info", "To fill a table in MySQL, use the \"INSERT INTO\" statement.")
     insertQ=StringVar()
     insertQ.set("INSERT INTO `tableName`(`col1`, `col2`) VALUES ([value-1],[value-2])")
     QueryArea.delete(1.0, END)
@@ -282,7 +282,7 @@ def insertQuery(QueryArea):
 
 
 def updateQuery(QueryArea):
-    showinfo("UPDATE Query info", "")
+    showinfo("UPDATE Query info", "You can update existing records in a table by using the \"UPDATE\" statement")
     updateQ=StringVar()
     updateQ.set("UPDATE `tableName` SET `col1`=[value-1],`col2`=[value-2] WHERE 1")
     QueryArea.delete(1.0, END)
@@ -290,7 +290,7 @@ def updateQuery(QueryArea):
 
 
 def deleteQuery(QueryArea):
-    showinfo("DELETE Query info", "")
+    showinfo("DELETE Query info", "You can delete records from an existing table by using the \"DELETE FROM\" statement")
     deleteQ=StringVar()
     deleteQ.set("DELETE FROM `tableName` WHERE 0")
     QueryArea.delete(1.0, END)
